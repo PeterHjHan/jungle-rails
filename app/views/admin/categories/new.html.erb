@@ -1,0 +1,20 @@
+<section class="admin-products-new">
+
+  <header class="page-header">
+    <h1>Category &raquo; New Category</h1>
+  </header>
+  <% p @category %>
+  <%= form_for [:admin, @category] do |form|  %>
+ 
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <%= form.submit 'Create Category', class: 'btn btn-primary' %>
+
+  <% end %>
+
+</section>
+
+
