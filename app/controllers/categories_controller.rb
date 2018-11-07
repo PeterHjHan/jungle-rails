@@ -8,7 +8,6 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
-
   def create 
     @category = Category.new(category_params)
     
@@ -18,8 +17,6 @@ class CategoriesController < ApplicationController
       render :new
     end
   end
-
-  
 
   def show
     @category = Category.find(params[:id])
