@@ -7,16 +7,8 @@
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
     <p>EMAIL: <%= @order.email %>
-    <p>IMAGE <%= image_tag (@product.image) %></p>
-
-    <p>name: <%= @product.name %></p>
-
-    <p>DESCRIPTION <%= @product.description %></p>
-    <p> This leads to the product ID </p>
-    <p> PRODUCT ID: <%= @line_item.product_id %></p>
-    <p> QUANTITY: <%= @line_item.quantity%>
-    <p> TOTAL: <%= @line_item.total_price %>
-    <p> <%= @order.methods %> </p>
+      <%=render @order.line_items %>
+    <p>TOTAL PRICE: <%= @order.line_items.sum(:total_price_cents)/100.to_f %></p>
 
   </div>
 
