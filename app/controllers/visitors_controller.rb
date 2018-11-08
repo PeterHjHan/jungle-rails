@@ -4,9 +4,9 @@ class VisitorsController < ApplicationController
   end
 
   def create
-    user = Visitor.new(user_params)
-    if user.save
-      session[:visiro_id] = visitor.id
+    visitor = Visitor.new(user_params)
+    if visitor.save
+      session[:visitor_id] = visitor.id
       redirect_to '/'
     else
       redirect_to '/signup'
@@ -15,7 +15,7 @@ class VisitorsController < ApplicationController
   
   private
 
-  def visitor_params
+  def user_params
     params.require(:visitor).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 
