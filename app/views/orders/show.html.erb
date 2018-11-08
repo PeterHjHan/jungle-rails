@@ -6,6 +6,13 @@
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
+    <p>IMAGE </p>
+
+    <p>name: <%= @product.name %></p>
+
+    <p>DESCRIPTION <%= @product.description %></p>
+    <p> This leads to the product ID </p>
+    <%= p @line_item.product_id %>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
