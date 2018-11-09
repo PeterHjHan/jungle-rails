@@ -8,7 +8,7 @@
     <h4>Thank you for your order!</h4>
     <p>EMAIL: <%= @order.email %>
       <%=render @order.line_items %>
-    <p>TOTAL PRICE: <%= @order.line_items.sum(:total_price_cents)/100.to_f %></p>
+      <p>TOTAL PRICE: <%= @order.line_items.sum(:total_price_cents)/100.to_f %></p>
 
   </div>
 
