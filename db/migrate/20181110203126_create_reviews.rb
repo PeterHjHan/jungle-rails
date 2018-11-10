@@ -1,8 +1,6 @@
 class CreateReviews < ActiveRecord::Migration
   def change
-
-    drop_table :reviews
-
+    
     create_table :reviews do |t|
       t.string :description
       t.string :text
