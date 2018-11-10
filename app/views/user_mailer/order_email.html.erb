@@ -1,1 +1,8 @@
-<h1>This is an email created and sending</h1> 
+<h1>Thank you for ordering at Jungle</h1>
+<%= @order.id %>
+
+<p> Here are the details of your order</p>
+
+<p>TOTAL PRICE: <%= @order.line_items.sum(:total_price_cents)/100.to_f %></p>
+
+@testing
