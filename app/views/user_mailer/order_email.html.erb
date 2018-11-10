@@ -1,8 +1,8 @@
 <h1>Thank you for ordering at Jungle</h1>
-<%= @order.id %>
+Your Order Number is :<%= @order.id %>
 
-<p> Here are the details of your order</p>
+Here are the details of your order:
 
-<p>TOTAL PRICE: <%= @order.line_items.sum(:total_price_cents)/100.to_f %></p>
+<%= @order.line_items.product.quantity %>
 
-@testing
+TOTAL PRICE: <%= @order.line_items.sum(:total_price_cents)/100.to_f %>
