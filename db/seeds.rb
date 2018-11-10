@@ -148,22 +148,4 @@ User.destroy_all
 ## Reviews
 
 
-Review.destroy_all
-
-Review.create!([
-  {
-  product_id: @product1.id,
-  user_id: @user1.id,
-  description: "This is a product reviewed by Peter",
-  rating: 4, 
-  },
-  {
-    product_id: @product2.id,
-    user_id: @user2.id,
-    description: "This is a product reviewed by Mia",
-    rating: 5, 
-  }
-])
-  
-
 puts "DONE!"
