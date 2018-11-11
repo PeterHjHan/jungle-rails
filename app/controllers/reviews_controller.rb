@@ -27,10 +27,9 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
-
     respond_to do |format|
       if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
+        format.html { redirect_to "/", notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new }
@@ -56,9 +55,11 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1
   # DELETE /reviews/1.json
   def destroy
+    @product = Product.find(params[:product_id])
+    @review = Review.find(params[:id])
     @review.destroy
     respond_to do |format|
-      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
+      format.html { redirect_to product_review_path(id: @review.id, product_id: @product.id), notice: 'Review was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,13 +67,15 @@ class ReviewsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_review
-      # @review = Review.find_by(params[:id])
-      @review = product.reviews.find_by(params[:id])
+      @product = Product.find(params[:product_id])
+      @review = Review.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:description, :rating, :product_id, :user_id)
+      @product = Product.find(params[:product_id])
+
+      params.require(:review).permit(:description, :rating, product_id: @product.id, user_id: @user)
     end
 
     def set_product
