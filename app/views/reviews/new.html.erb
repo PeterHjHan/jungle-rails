@@ -4,6 +4,10 @@
 
 <%= render 'form' %>
 
+<% else %>
+
+<p>Only logged in users can create reviews!</p>
+
 <% end %>
 
-<%= link_to 'Back', new_product_review_path %>
+<%= link_to 'Back', product_reviews_path %>
