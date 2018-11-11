@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Description</th>
-      <th>Text</th>
       <th>Rating</th>
       <th>Product</th>
       <th>User</th>
@@ -18,13 +17,9 @@
     <% @reviews.each do |review| %>
       <tr>
         <td><%= review.description %></td>
-        <td><%= review.text %></td>
         <td><%= review.rating %></td>
-        <td><%= review.product %></td>
-        <td><%= review.user %></td>
-        <td><%= link_to 'Show', review %></td>
-        <td><%= link_to 'Edit', edit_review_path(review) %></td>
-        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', new_product_review_path %></td>
+        
       </tr>
     <% end %>
   </tbody>

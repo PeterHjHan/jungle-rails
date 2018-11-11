@@ -3,6 +3,6 @@ Your Order Number is :<%= @order.id %>
 
 Here are the details of your order:
 
-<%= @order.line_items.product %>
+<%= @order.line_items.product.name %>
 
 TOTAL PRICE: <%= @order.line_items.sum(:total_price_cents)/100.to_f %>
