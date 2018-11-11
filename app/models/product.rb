@@ -1,5 +1,4 @@
 class Product < ActiveRecord::Base
-
   has_many :reviews
 
   monetize :price_cents, numericality: true
@@ -11,5 +10,4 @@ class Product < ActiveRecord::Base
   validates :price, presence: true
   validates :quantity, presence: true
   validates :category, presence: true
-
 end

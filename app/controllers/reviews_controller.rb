@@ -26,7 +26,8 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(review_params)
+    puts 
+    @review = @product.reviews.new(review_params)
     respond_to do |format|
       if @review.save
         format.html { redirect_to product_reviews_path(product_id: params[:product_id]), notice: 'Review was successfully created.' }
@@ -74,8 +75,7 @@ class ReviewsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
       @product = Product.find(params[:product_id])
-
-      params.require(:review).permit(:description, :rating, product_id: @product.id, user_id: @user)
+      params.require(:review).permit(:description, :rating, :product_id).merge(user_id: current_user.id)
     end
 
     def set_product
