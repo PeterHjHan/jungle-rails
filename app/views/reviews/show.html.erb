@@ -6,24 +6,18 @@
 </p>
 
 <p>
-  <strong>Text:</strong>
-  <%= @review.text %>
-</p>
-
-<p>
   <strong>Rating:</strong>
   <%= @review.rating %>
 </p>
 
 <p>
   <strong>Product:</strong>
-  <%= @review.product %>
+  <%= @review.product.id %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @review.user %>
+  <%= @review.user.first_name %>
 </p>
 
-<%= link_to 'Edit', edit_review_path(@review) %> |
-<%= link_to 'Back', reviews_path %>
+<%= link_to 'Back', product_reviews_path %>

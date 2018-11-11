@@ -18,7 +18,7 @@
       <tr>
         <td><%= review.description %></td>
         <td><%= review.rating %></td>
-        <td><%= link_to 'Show', new_product_review_path %></td>
+        <td><%= link_to 'Show', product_review_path(id: review.id, product_id: @product.id) %></td>
         <td><%= link_to 'Destroy', product_review_path(id: review.id, product_id: review.product.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

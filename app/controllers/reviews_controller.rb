@@ -29,7 +29,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     respond_to do |format|
       if @review.save
-        format.html { redirect_to "/", notice: 'Review was successfully created.' }
+        format.html { redirect_to product_reviews_path(product_id: params[:product_id]), notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new }
@@ -59,7 +59,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
     respond_to do |format|
-      format.html { redirect_to product_review_path(id: @review.id, product_id: @product.id), notice: 'Review was successfully destroyed.' }
+      format.html { redirect_to product_review_path(product_id: @product.id), notice: 'Review was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -68,7 +68,7 @@ class ReviewsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_review
       @product = Product.find(params[:product_id])
-      @review = Review.find(params[:id])
+      @review = Review.find_by(id: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
