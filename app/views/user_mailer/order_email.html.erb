@@ -1,8 +1,14 @@
-<h1>Thank you for ordering at Jungle</h1>
+Thank you for ordering at Jungle!
+
 Your Order Number is :<%= @order.id %>
 
 Here are the details of your order:
 
-<%= @order.line_items.product.name %>
+<% @order.line_items.each do |line_item| %>
+NAME: <%= line_item.product.name %>
+DESCRIPTION <%= line_item.product.description %>
+QUANTITY: <%= line_item.quantity%>
+TOTAL : <%= line_item.total_price %> 
+<% end %>
 
 TOTAL PRICE: <%= @order.line_items.sum(:total_price_cents)/100.to_f %>
