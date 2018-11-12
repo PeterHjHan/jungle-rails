@@ -28,8 +28,6 @@ RSpec.describe Product, type: :model do
     end
 
     it "should have not have a category" do
-      puts "WHAT IS THIS #{category.name}"
-      puts "THIS IS WHAT IS IT #{subject.category.name}"
       subject.category = nil;
       expect(subject).to_not be_valid
     end
