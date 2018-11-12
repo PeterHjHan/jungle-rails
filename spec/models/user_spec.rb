@@ -1,7 +1,7 @@
 RSpec.describe User, type: :model do
 
   subject {
-    described_class.create(first_name: "John", last_name: "Smith", email: "testing@TESTING.COM", password_confirmation: "12345678", password: "12345678")
+    described_class.new(first_name: "John", last_name: "Smith", email: "testing@TESTING.COM", password_confirmation: "12345678", password: "12345678")
   }
 
   describe 'Validations' do
@@ -38,8 +38,11 @@ RSpec.describe User, type: :model do
       expect(subject).to be_valid
     end
 
-    it "emails must be unique and not case sensitive" do
 
+    it "emails must be unique and not case sensitive" do
+      new_user = User.create(first_name: "John", last_name: "Smith", email: "testing@testing.COM", password_confirmation: "12345678", password: "12345678")
+  
+      expect(subject).not_to be_valid
     end
 
     it "must have first name, last name" do 
