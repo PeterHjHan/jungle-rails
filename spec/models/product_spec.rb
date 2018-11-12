@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-  category = Category.new(id: 7, name: "TESTING")
+  let(:category) { Category.create(id: 7, name: "MICROSOFT") }
+
   subject {
     described_class.new(name: "WHATSUP", price_cents: 10.00, quantity: 4, category_id: category.id)
   }
@@ -27,8 +28,9 @@ RSpec.describe Product, type: :model do
     end
 
     it "should have not have a category" do
-      puts "WHAT IS THIS? #{subject.category_id}"
-      subject.category_id = nil;
+      puts "WHAT IS THIS #{category.name}"
+      puts "THIS IS WHAT IS IT #{subject.category.name}"
+      subject.category = nil;
       expect(subject).to_not be_valid
     end
 
