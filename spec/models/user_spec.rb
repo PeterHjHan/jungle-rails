@@ -40,7 +40,7 @@ RSpec.describe User, type: :model do
 
 
     it "emails must be unique and not case sensitive" do
-      new_user = User.create(first_name: "John", last_name: "Smith", email: "testing@testing.COM", password_confirmation: "12345678", password: "12345678")
+      new_user = User.create(first_name: "John", last_name: "Smith", email: "TesTing@testing.COM", password_confirmation: "12345678", password: "12345678")
   
       expect(subject).not_to be_valid
     end
@@ -48,6 +48,26 @@ RSpec.describe User, type: :model do
     it "must have first name, last name" do 
       expect(subject).to be_valid
     end
-    # validation tests/examples here
+
+    it "must not have any white spaces before" do
+      new_user = User.create(first_name: "John", last_name: "Smith", email: "  TesTing@testing.COM  ", password_confirmation: "12345678", password: "12345678")
+
+      
+
+      expect(new_user).not_to be_valid
+    end
   end
+
+
+
+  describe '.authenticate_with_credentials' do
+    it "must be valid if the password is correct" do
+      user = User.create(first_name: "John", last_name: "Smith", email: "3@com", password_confirmation: "12345678", password: "12345678")
+
+      session = User.authenticate_with_credentials("3@com", "12345678")
+
+      expect(session).to eq user
+    end
+  end
+
 end
